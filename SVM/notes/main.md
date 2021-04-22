@@ -424,7 +424,7 @@ w\cdot(p-q)\ge B^{+}-B^{-}>0
 $$
 and so 
 $$
-\|p-q\|\ge\frac{B^{+}-B^{-}}{\|w\|\tau_{w}(A^{+},A^{-})}
+\|p-q\|\ge\frac{B^{+}-B^{-}}{\|w\|}=\tau_{w}(A^{+},A^{-})
 $$
 Since this holds for any $w$, we have the result for $\tau(A^{+},A^{-})$.
 
@@ -497,7 +497,7 @@ $$
 \frac{d}{ds}\|t(s)\|^2|_{s=0} = v_{1}\cdot(v_{2}-v_{1})=v_{1}\cdot v_{2}-\|v_{1}\|^2\le 0
 $$
 since $v_{1}\cdot v_{2}\le D^{2}$ and $\|v_{1}\|^2=D^2$. If $v_{1}\cdot v_{2}<D^{2}$, then
-this derivative would be negative, which by the mean value theorem would mean that there is a value of
+this derivative would be negative, which would mean that there is a value of
 $s$ where $t(s)$ would be less than $D$.  Since that can't happen, we conclude that $v_{1}\cdot v_{2}=D^{2}$
 which means that $v_{1}=v_{2}$ -- the vectors have the same magnitude $D$ and are parallel.
 This establishes uniqueness.  
@@ -536,7 +536,7 @@ so
 $$
 \frac{dD(s)}{ds}|_{s=0} = 2(f^{+}(p')-f^{+}(p))<0
 $$
-since $f(p)=0$. This means that $D(s)$ is decreasing along $t(s)$ and so by the mean value theorem
+since $f(p)=0$. This means that $D(s)$ is decreasing along $t(s)$ and so 
 there is a point $s'$ along $t(s)$ where $\|t(s')-q\|<D$.  This contradicts the fact that $D$ is the minimal
 distance.  The same argument shows that $f^{-}(x)=0$ is also a supporting hyperplane.
 
@@ -633,17 +633,23 @@ subject to the constraints that all $\lambda^{\pm}_{i}\ge 0$ and
 $$
 \alpha = \sum_{i=1}^{n_{+}}\lambda^+_{i} = \sum_{i=1}^{n_{-}}\lambda^{-}_{i}.
 $$
-
+  
 Problem 2 is like problem 1, except we don't require the sums of the $\lambda^{\pm}_{i}$ to be 
 one, but only that they be equal to each other; and we modify the objective function slightly.
 It turns out that the solution to this optimization problem easily yields the solution to our original one.
 
 **Lemma:**  Suppose $\lambda^{+}$ and $\lambda^{-}$ satisfy the constraints of problem 2 and
-yield the minimal value for the objective function $Q(\lambda^{+},\lambda^{-})$.  Rescale the
+yield the minimal value for the objective function $Q(\lambda^{+},\lambda^{-})$.  Then $\alpha\not=0$.
+Rescale the
 $\lambda^{\pm}$ to have sum equal to one by dividing by $\alpha$, yielding 
 $\tau^{\pm}=(1/\alpha)\lambda^{\pm}$.  Then $w(\tau^{+},\tau^{-})$ is a solution to optimization problem 1.
 
-**Proof:** First of all, notice that $\tau^{\pm}$ still satisfy the constraints of problem 2.
+**Proof:**  To show that $\alpha\not=0$, suppose that $\lambda^{\pm}_{i}=0$ for all $i\not=1$ and
+$\lambda=\lambda^{+}_{1}=\lambda^{-}_{1}$.  The one-variable quadratic function $Q(\lambda)$ takes
+its minimum value at $\lambda=1/\|x_{1}^{+}-x_{1}^{-}\|^2$ and its value at that point is negative.  Therefore
+the minimum value of $Q$ is negative, which means $\alpha\not=0$ at that minimum point. 
+
+For the equivalence, notice that $\tau^{\pm}$ still satisfy the constraints of problem 2.
 Therefore
 $$
 Q(\lambda^{+},\lambda^{-}) = \|w(\lambda^{+},\lambda^{-})\|^2-2\alpha\le \|w(\tau^{+},\tau^{-})\|^2-2.
@@ -755,7 +761,7 @@ M_{i,j} = \max\{-\lambda_{i}^{+},-\lambda_{j}^{-}\}
 $$
 and 
 $$
-\delta_{i,j} = -\frac{(p(\lambda^{+})-q(\lambda^{-}))\cdot(x_{i}^{+}-x_{j}^{-})}{\|x^+_{i}-x^{-}_{j}\|^2}.
+\delta_{i,j} = \frac{1-(p(\lambda^{+})-q(\lambda^{-}))\cdot(x_{i}^{+}-x_{j}^{-})}{\|x^+_{i}-x^{-}_{j}\|^2}.
 $$
 If $\delta_{i,j}\ge M$ then set $\delta^{*}=\delta_{i,j}$; otherwise set $\delta^{*}=M$.  Then update
 the $\lambda^{\pm}$ by the equations:
@@ -779,7 +785,7 @@ $$
 where $B^{+}=w\cdot p$ and $B^{-}=w\cdot q$.  Since $w=p-q$ we can simplify this to obtain
 
 $$
-f(x)=(p-q)\dot x -\frac{\|p\|^2-\|q\|^2}{2}=0.
+f(x)=(p-q)\cdot x -\frac{\|p\|^2-\|q\|^2}{2}=0.
 $$
 
 In +@fig:penguinsolution, we show the result of applying this algorithm to the penguin data

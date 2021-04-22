@@ -30,6 +30,9 @@ UConn LMS.
 
 [An outline of the course topics is available here.](topics.md)
 
+[A guide to the first assigned project is here](project.md)
+
+[A guide to the second assigned project is here](project2.md)
 
 ### Resources
 
